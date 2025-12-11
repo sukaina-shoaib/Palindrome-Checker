@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDA Palindrome Checker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            background: url("{{ url_for('static', filename='img/img.jpg') }}") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+            padding: 30px 25px;
+            width: 450px;
+            height: 350px;
+            text-align: center;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .glass-card h1 {
+            font-size: 28px;
+            margin-bottom: 40px;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        .glass-card form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .glass-card input[type="text"] {
+            padding: 12px 15px;
+            font-size: 18px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            backdrop-filter: blur(5px);
+            width: 100%;
+        }
+
+        .glass-card input::placeholder {
+            color: #eee;
+        }
+
+        .glass-card button {
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .glass-card button:hover {
+            background-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 12px;
+            font-weight: 500;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .accepted {
+            background-color: rgba(72, 187, 120, 0.3);
+            color: #54ed59;
+        }
+
+        .rejected {
+            background-color: rgba(144, 30, 30, 0.3);
+            color: #fd6961;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <h1>PDA Palindrome Checker</h1>
+        <form method="POST" aria-label="Palindrome Checker Form">
+            <input type="text" name="string_input" placeholder="Enter your string" required aria-required="true">
+            <button type="submit">Check</button>
+        </form>
+
+        {% if result %}
+        <div class="result {% if 'Accepted' in result %}accepted{% else %}rejected{% endif %}">
+            {{ result }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
