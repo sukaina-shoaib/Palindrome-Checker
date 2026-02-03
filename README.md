@@ -109,4 +109,3 @@ Accepted: This string is a palindrome according to PDA rules.
 * Deterministic behavior simulation
 
 
-Just tell me ✨
